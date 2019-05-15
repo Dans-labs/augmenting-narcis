@@ -1,0 +1,29 @@
+version: '2'
+  
+services:
+  sandboxnarcis:
+    command: mongod --setParameter failIndexKeyTooLong=false
+    container_name: sandbox_mongo_demo
+    image: mongo:4.0
+    ports:
+      - "27101:27017" # map port to none standard port, to avoid conflicts with locally installed mongodb. 
+    volumes:
+      - ./data/mongo/db:/data/db
+      - ./data/original:/exchange
+
+  elasticsnarcis:
+      build: elasticsearch/
+      ports:
+        - "9201:9200"
+        - "9301:9300"
+      environment:
+        - "ES_JAVA_OPTS=-Xmx2024m -Xms2024m"
+      ulimits:
+        memlock:
+          soft: -1
+          hard: -1
+      mem_limit: 4g
+      volumes:
+        - ./data/elastic/data:/usr/share/elasticsearch/data
+        - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+        - ./data/original:/exchange
