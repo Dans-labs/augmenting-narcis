@@ -1,7 +1,7 @@
 version: '2'
   
 services:
-  sandboxnarcis:
+  mongonarcis:
     command: mongod --setParameter failIndexKeyTooLong=false
     container_name: sandbox_mongo_demo
     image: mongo:4.0
@@ -10,6 +10,18 @@ services:
     volumes:
       - ./data/mongo/db:/data/db
       - ./data/original:/exchange
+
+  web:
+    build: ./narcisweb
+    restart: always
+    ports:
+      - "8085:5000"
+    environment:
+      - "DOCKER_MACHINE_IP=0.0.0.0"
+    volumes:
+      - ./data/original:/exchange
+    depends_on:
+      - mongonarcis
 
   elasticsnarcis:
       build: elasticsearch/
