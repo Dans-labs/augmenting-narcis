@@ -6,8 +6,6 @@ import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../')))
 
 from os import walk
-from easy.settings import *
-from easy.core.database import *
 
 import logging
 logging.basicConfig(filename='logs/importmetadata.log',format='%(asctime)s %(levelname)s  %(message)s', datefmt='%Y-%m-%d %H:%M:%S',level=logging.DEBUG)
@@ -17,7 +15,7 @@ metadatapath = "%s/metadata" % path
 print("Importing metadata from %s" % metadatapath)
 logging.info("Importing metadata from %s" % metadatapath)
 
-client = MongoClient()
+client = MongoClient('mongodb://mongonarcis:27017')
 datasetdb = client.get_database('dataset')
 col = datasetdb.data
 
