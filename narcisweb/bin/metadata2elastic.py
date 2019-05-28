@@ -17,6 +17,12 @@ metadatapath = path
 print("Importing metadata from %s" % metadatapath)
 logging.info("Importing metadata from %s" % metadatapath)
 
+es = Elasticsearch(
+['elasticnarcis'],
+http_auth=('elastic', 'changeme'),
+port=9201
+)
+
 client = MongoClient('mongodb://mongonarcis:27017')
 datasetdb = client.get_database('narcis')
 col = datasetdb.data
