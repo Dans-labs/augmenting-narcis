@@ -1,0 +1,2 @@
+pyoai
+git+git://github.com/sckott/habanero.git#egg=habanero

@@ -1,0 +1,11 @@
+flask
+elasticsearch
+pyoai
+pymongo
+simplejson
+requests
+httpretty
+numpy==1.15
+pillow
+pandas==0.22
+tables
