@@ -18,14 +18,16 @@ print("Importing metadata from %s" % metadatapath)
 logging.info("Importing metadata from %s" % metadatapath)
 
 es = Elasticsearch(
-['elasticnarcis'],
+['elasticsnarcis'],
 http_auth=('elastic', 'changeme'),
-port=9201
+port=9200
 )
 
 client = MongoClient('mongodb://mongonarcis:27017')
 datasetdb = client.get_database('narcis')
 col = datasetdb.data
+newindex = 'narcis'
+newcol = 'metadata'
 
 f = []
 for (dirpath, dirnames, filenames) in walk("%s" % metadatapath):
@@ -44,9 +46,11 @@ for filename in f:
         try:
             es.create(index=newindex, doc_type=newcol, body=info[url], id=info[url]['id'])
         except:
-            es.delete(index=newindex, doc_type=newcol, id=info[url]['urlid'])
-            es.create(index=newindex, doc_type=newcol, body=info[url], id=info[url]['id'])
-            logging.error("Error in inserting %s into 'dataset' database" % (path + "/" + filename))
+            try:
+                es.delete(index=newindex, doc_type=newcol, id=info[url]['id'])
+                es.create(index=newindex, doc_type=newcol, body=info[url], id=info[url]['id'])
+            except:
+                logging.error("Error in inserting %s into 'dataset' database" % (path + "/" + filename))
 
 print("Metadata imported")
 logging.info("Metadata imported")
