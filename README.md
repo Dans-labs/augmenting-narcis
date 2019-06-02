@@ -9,7 +9,9 @@ All data should be uploaded in MongoDB and Elastic before you can use it. Run up
 docker-compose build
 docker-compose up -d   
 ./init.sh
+docker-compose down
 ```
+It will take about 3-4 hours when all data will be available in folder ./data
 
 ### Infrastructure
 To get NARCIS infrastructure up and running execute commands
