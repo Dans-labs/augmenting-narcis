@@ -28,6 +28,13 @@ services:
         - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
         - ./data/original:/exchange
 
+  jupyter:
+    build: ./notebooks
+    ports:
+      - "8880:8888"
+    volumes:
+      - ./data/original:/exchange
+
   web:
     build: ./narcisweb
     restart: always
