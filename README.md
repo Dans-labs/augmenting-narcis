@@ -1,7 +1,7 @@
 # augmenting-narcis
 ## Assessment for NARCIS Publication Information Enrichment
 ### Downloads
-Download NARCIS data from https://dataverse.nl/dataset.xhtml?persistentId=hdl:10411/8H4QSU and copy in folder ./data/original
+Download NARCIS data from https://dataverse.nl/dataset.xhtml?persistentId=hdl:10411/8H4QSU in the current folder (augmenting-narcis)
 
 ### Initialization
 All data should be uploaded in MongoDB and Elastic before you can use it. Run upload script first
