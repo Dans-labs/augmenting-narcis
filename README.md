@@ -3,11 +3,19 @@
 ### Downloads
 Download NARCIS data from https://dataverse.nl/dataset.xhtml?persistentId=hdl:10411/8H4QSU and copy in folder ./data/original
 
+### Initialization
+All data should be uploaded in MongoDB and Elastic before you can use it. Run upload script first
+```
+docker-compose build
+docker-compose up -d   
+./init.sh
+```
+
 ### Infrastructure
 To get NARCIS infrastructure up and running execute commands
 ```
 docker-compose build
-docker-compose up 
+docker-compose up  
 ```
 The infrastructure consists of the following components:
 ##### MongoDB container (mongonarcis) 
