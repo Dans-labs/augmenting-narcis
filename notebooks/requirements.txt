@@ -1,0 +1,6 @@
+elasticsearch
+pyoai
+pymongo
+simplejson
+requests
+httpretty
