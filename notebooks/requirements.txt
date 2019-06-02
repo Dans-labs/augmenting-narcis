@@ -1,0 +1,7 @@
+elasticsearch==5.5.3
+git+git://github.com/sckott/habanero.git#egg=habanero
+pyoai
+pymongo
+simplejson
+requests
+httpretty
