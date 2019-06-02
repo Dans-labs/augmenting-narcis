@@ -1,11 +1,14 @@
 # augmenting-narcis
 ## Assessment for NARCIS Publication Information Enrichment
+### Downloads
+Download NARCIS data from https://dataverse.nl/dataset.xhtml?persistentId=hdl:10411/8H4QSU and copy in folder ./data/original
+
+### Infrastructure
 To get NARCIS infrastructure up and running execute commands
 ```
 docker-compose build
 docker-compose up 
 ```
-### Infrastructure
 The infrastructure consists of the following components:
 ##### MongoDB container (mongonarcis) 
 ##### Elasticsearch (elasticsnarcis) 
