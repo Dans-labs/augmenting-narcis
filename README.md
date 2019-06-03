@@ -8,6 +8,7 @@ https://www.grid.ac/downloads
 https://zenodo.org/record/1438356#.XPTbxS-B2qA
 #### Crossref Dump
 https://github.com/greenelab/crossref/tree/master/data/mongo-export
+https://archive.org/download/crossref_doi_dump_201809
 
 # Subsets
 Get subset of publications from 2017 (NARCIS)
