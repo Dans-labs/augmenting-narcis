@@ -2,6 +2,16 @@
 ## Assessment for NARCIS Publication Information Enrichment
 ### Downloads
 Download NARCIS data from https://dataverse.nl/dataset.xhtml?persistentId=hdl:10411/8H4QSU in the current folder (augmenting-narcis)
+#### Grid
+https://www.grid.ac/downloads
+#### DOIBoost
+https://zenodo.org/record/1438356#.XPTbxS-B2qA
+#### Crossref Dump
+https://github.com/greenelab/crossref/tree/master/data/mongo-export
+
+# Subsets
+Get subset of publications from 2017 (NARCIS)
+cat harvest.2019-05-15 |grep '"date": \["2017'|grep 'info:eu-repo/semantics/article'
 
 ### Initialization
 All data should be uploaded in MongoDB and Elastic before you can use it. Run upload script first
