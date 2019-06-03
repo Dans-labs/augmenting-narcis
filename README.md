@@ -11,7 +11,9 @@ https://github.com/greenelab/crossref/tree/master/data/mongo-export
 
 # Subsets
 Get subset of publications from 2017 (NARCIS)
-cat harvest.2019-05-15 |grep '"date": \["2017'|grep 'info:eu-repo/semantics/article'
+```
+cat ./data/original/harvest.2019-05-15 |grep '"date": \["2017'|grep 'info:eu-repo/semantics/article'
+```
 
 ### Initialization
 All data should be uploaded in MongoDB and Elastic before you can use it. Run upload script first
