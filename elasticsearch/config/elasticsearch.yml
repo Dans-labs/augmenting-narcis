@@ -24,3 +24,6 @@ xpack.monitoring.enabled: false
 xpack.ml.enabled: false
 xpack.graph.enabled: false
 xpack.watcher.enabled: false
+cluster.routing.allocation.disk.threshold_enabled: true
+cluster.routing.allocation.disk.watermark.low: 30gb
+cluster.routing.allocation.disk.watermark.high: 20gb
