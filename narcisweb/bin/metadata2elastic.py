@@ -10,7 +10,7 @@ import simplejson
 import json
 import logging
 from elasticsearch import Elasticsearch
-logging.basicConfig(filename='logs/importmetadata.log',format='%(asctime)s %(levelname)s  %(message)s', datefmt='%Y-%m-%d %H:%M:%S',level=logging.DEBUG)
+logging.basicConfig(filename='importmetadata.log',format='%(asctime)s %(levelname)s  %(message)s', datefmt='%Y-%m-%d %H:%M:%S',level=logging.DEBUG)
 
 path = "/exchange"
 metadatapath = path
