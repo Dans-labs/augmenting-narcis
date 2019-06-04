@@ -1,7 +1,7 @@
 #!/bin/bash
 
 mkdir data
-mkdir original
+mkdir ./data/original
 wget https://dataverse.nl/api/access/datafile/15230 -O ./data/original/harvest.2019-05-15.gz
 wget https://digitalscience.figshare.com/ndownloader/files/15167609 -O grid.zip
 gzip -cd ./data/original/harvest.2019-05-15.gz > ./data/original/harvest.2019-05-15 
