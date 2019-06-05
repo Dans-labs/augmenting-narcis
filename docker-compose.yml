@@ -34,6 +34,7 @@ services:
       - "8880:8888"
     volumes:
       - ./data/original:/exchange
+      - ./notebooks/persistent/:/home/
 
   web:
     build: ./narcisweb

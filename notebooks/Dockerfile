@@ -1,4 +1,4 @@
 FROM jupyter/datascience-notebook
-COPY ./ /home/jovyan/work
-WORKDIR /home/jovyan
-RUN pip install -r /home/jovyan/work/requirements.txt
+COPY requirements.txt /init/requirements.txt
+RUN pip install -r /init/requirements.txt
+WORKDIR /home/
