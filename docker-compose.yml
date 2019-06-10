@@ -1,4 +1,4 @@
-version: '2'
+version: '2.2'
   
 services:
   mongonarcis:
@@ -8,25 +8,28 @@ services:
     ports:
       - "27101:27017" # map port to none standard port, to avoid conflicts with locally installed mongodb. 
     volumes:
-      - ./data/mongo/db:/data/db
+      - mongodata0:/data/db
       - ./data/original:/exchange
 
-  elasticsnarcis:
-      build: elasticsearch/
-      ports:
-        - "9201:9200"
-        - "9301:9300"
-      environment:
-        - "ES_JAVA_OPTS=-Xmx2024m -Xms2024m"
-      ulimits:
-        memlock:
-          soft: -1
-          hard: -1
-      mem_limit: 4g
-      volumes:
-        - ./data/elastic/data:/usr/share/elasticsearch/data
-        - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
-        - ./data/original:/exchange
+  es0:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.1.1
+    container_name: es0-doiboost
+    ports:
+      - "9201:9200"
+    environment:
+      - node.name=es0
+      - discovery.type=single-node
+      - cluster.name=docker-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xmx2024m -Xms2024m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    mem_limit: 4g
+    volumes:
+      - esdata0:/usr/share/elasticsearch/data
+      - ./data/original:/exchange
 
   jupyter:
     build: ./notebooks
@@ -47,4 +50,10 @@ services:
       - ./data/original:/exchange
     depends_on:
       - mongonarcis
-      - elasticsnarcis
+      - es0
+
+volumes:
+  esdata0:
+    driver: local
+  mongodata0:
+    driver: local
