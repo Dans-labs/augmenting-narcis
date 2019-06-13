@@ -1,6 +1,8 @@
 #!/usr/local/bin/python
 from __future__ import print_function, absolute_import
 
+# make sure you only have the DOIBoost 2017 files in the data/original folder
+
 import sys
 import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../')))
@@ -37,6 +39,7 @@ for filename in f:
     for lastline in file:
         metadata = json.loads(lastline)
         try:
+            # create a dict from the metadata string
             col.insert_one(ast.literal_eval(metadata))
         except:
             logging.error("Error in inserting %s into 'dataset' database" % (path + "/" + filename))
