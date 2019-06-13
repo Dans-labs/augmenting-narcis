@@ -1,5 +1,12 @@
 # augmenting-narcis
 ## Assessment for NARCIS Publication Information Enrichment
+
+### Handy links for the project
+## Trello
+https://trello.com/b/ZitfLTe0
+## Google Drive
+https://drive.google.com/drive/folders/19IUE0X9BmP6FPM0T5Rv7qQBZ4eYXvWkB?usp=sharing
+
 ### Downloads
 Download NARCIS data from https://dataverse.nl/dataset.xhtml?persistentId=hdl:10411/8H4QSU in the current folder (augmenting-narcis)
 #### Grid
@@ -33,8 +40,8 @@ docker-compose build
 docker-compose up  
 ```
 The infrastructure consists of the following components:
-##### MongoDB container (mongonarcis) 
-##### Elasticsearch (elasticsnarcis) 
+##### MongoDB container (mongonarcis)
+##### Elasticsearch (elasticsnarcis)
 ##### Jupyter notebook (jupyter)
 ##### Flask app (web)
-Please note that Jupyter notebook is running on port 8880. To access it go to 0.0.0.0:8880 and copy/paste the token shown as result of "docker-compose up" command. 
+Please note that Jupyter notebook is running on port 8880. To access it go to 0.0.0.0:8880 and copy/paste the token shown as result of "docker-compose up" command.
