@@ -30,7 +30,7 @@ for (dirpath, dirnames, filenames) in walk("%s" % metadatapath):
         os.remove(filenames)
     f.extend(filenames)
 
-print("Files to be uploaded: ", len(f), ".")
+print("Files to be uploaded:", len(f))
 i = 0
 for filename in f:
     i += 1
@@ -45,8 +45,6 @@ for filename in f:
         except:
             logging.error("Error in inserting %s into 'dataset' database" % (path + "/" + filename))
     print(i, "files out of ", len(f), "uploaded.")
-print((len(f) - i), "not uploaded.")
-
 
 print("Metadata imported")
 logging.info("Metadata imported")

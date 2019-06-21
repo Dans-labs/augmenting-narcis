@@ -30,13 +30,12 @@ for (dirpath, dirnames, filenames) in walk("%s" % metadatapath):
         os.remove(filenames)
     f.extend(filenames)
 
-print("Files to be uploaded: ", len(f), ".")
-
+print("Files to be uploaded:", len(f))
+i = 0
 for filename in f:
+    i += 1
     filepath = "%s/%s" % (path, filename)
     file = open(filepath, 'r')
-
-    print(filepath)
 
     for lastline in file:
         metadata = json.loads(lastline)
