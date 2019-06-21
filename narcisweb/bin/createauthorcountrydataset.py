@@ -20,8 +20,6 @@ es = es_local
 
 # set the elasticsearch index and doctype
 searchindex = 'grid'
-doctype = 'metadata'
-
 
 def dict_to_json(data, foldername, filename):
     """
@@ -65,7 +63,7 @@ def create_author_country_data(metacollection, foldername, filename):
     max_file_size = 10000
 
     # make sure that the file exists
-    file = open(foldername + "/" + filename+"-"+str(file_index), "w+")
+    file = open(foldername + "/" + filename+"-"+str(file_index) + ".json", "w+")
     file.close()
 
     # loop over the metadata entries
@@ -121,7 +119,7 @@ def create_author_country_data(metacollection, foldername, filename):
                         file_lines = 0
 
                         # make sure that the file exists
-                        file = open(foldername + "/" + filename+"-"+str(file_index), "w+")
+                        file = open(foldername + "/" + filename+"-"+str(file_index) + ".json", "w+")
                         file.close()
 
                     # add one to the max number of lines in the current file
