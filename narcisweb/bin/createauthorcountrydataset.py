@@ -101,7 +101,7 @@ def create_author_country_data(metacollection, foldername, filename):
                     gridID = identifiers[1]['value']
 
                     # retrieve the counrty of the authors affiliation in the GRID data
-                    res = es.search(index=searchindex, doc_type=doctype,
+                    res = es.search(index=searchindex,
                                     body={"query": {"match": {'ID': "%s" % gridID }}})
                     country = res['hits']['hits'][0]['_source']['Country']
 
