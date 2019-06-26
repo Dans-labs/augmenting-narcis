@@ -19,7 +19,7 @@ es = Elasticsearch(
     port=9200
     )
 
-path = "/exchange/DOIboost2017"
+path = "/exchange/DOIboost2018"
 metadatapath = path
 
 print("Importing metadata from %s" % metadatapath)
@@ -28,7 +28,12 @@ f = []
 for (dirpath, dirnames, filenames) in walk("%s" % metadatapath):
     f.extend(filenames)
 
+print('Importing', len(f), 'files.')
+
+i = 0
+
 for filename in f:
+    i += 1
     filepath = "%s/%s" % (path, filename)
     file = open(filepath, 'r')
 
@@ -37,8 +42,10 @@ for filename in f:
     for lastline in file:
         metadata = ast.literal_eval(json.loads(lastline))
         try:
-            helpers.bulk(es, metadata, index='doiboost2017', doc_type='metadata')
+            es.create(index='doiboost2018', doc_type='metadata', body=metadata, id=i)) #helpers.bulk(es, metadata, index='doiboost2017', doc_type='metadata')
         except:
-            continue
+            print('Error')
+
+    print('Imported file', i, 'out of', len(f))
 
 print("Metadata imported")
