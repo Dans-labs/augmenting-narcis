@@ -31,7 +31,7 @@ for (dirpath, dirnames, filenames) in walk("%s" % metadatapath):
 print('Importing', len(f), 'files.')
 
 i = 0
-
+errors = 0
 for filename in f:
     i += 1
     filepath = "%s/%s" % (path, filename)
@@ -42,10 +42,11 @@ for filename in f:
     for lastline in file:
         metadata = ast.literal_eval(json.loads(lastline))
         try:
-            es.create(index='doiboost2017', doc_type='metadata', body=metadata, id=i)) #helpers.bulk(es, metadata, index='doiboost2017', doc_type='metadata')
+            es.index(index='doiboost2017', doc_type='metadata', body=metadata)
         except:
-            print('Error')
+            errors += 1
 
     print('Imported file', i, 'out of', len(f))
 
-print("Metadata imported")
+
+print("Metadata imported with", errors, "errors")
