@@ -14,7 +14,7 @@ import logging
 import ast
 logging.basicConfig(filename='importdoiboost.log',format='%(asctime)s %(levelname)s  %(message)s', datefmt='%Y-%m-%d %H:%M:%S',level=logging.DEBUG)
 
-path = "/exchange"
+path = "/exchange/DOIboost2017"
 metadatapath = path
 
 print("Importing metadata from %s" % metadatapath)
@@ -26,15 +26,16 @@ col = datasetdb["doiboost2017"]
 
 f = []
 for (dirpath, dirnames, filenames) in walk("%s" % metadatapath):
+    if filenames == '.DS_Store':
+        os.remove(filenames)
     f.extend(filenames)
 
-print(f)
-
+print("Files to be uploaded:", len(f))
+i = 0
 for filename in f:
+    i += 1
     filepath = "%s/%s" % (path, filename)
     file = open(filepath, 'r')
-
-    print(filepath)
 
     for lastline in file:
         metadata = json.loads(lastline)
@@ -43,6 +44,7 @@ for filename in f:
             col.insert_one(ast.literal_eval(metadata))
         except:
             logging.error("Error in inserting %s into 'dataset' database" % (path + "/" + filename))
+    print(i, "files out of ", len(f), "uploaded.")
 
 print("Metadata imported")
 logging.info("Metadata imported")
