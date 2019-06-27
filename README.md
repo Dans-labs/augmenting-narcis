@@ -1,11 +1,19 @@
 # augmenting-narcis
 ## Assessment for NARCIS Publication Information Enrichment
 
-### Handy links for the project
-## Trello
+## Handy links for the project
+#### Trello
 https://trello.com/b/ZitfLTe0
-## Google Drive
+#### Google Drive
+The drive has the information about the complete project, without source code, and also some Elasticsearch indices.
+
 https://drive.google.com/drive/folders/19IUE0X9BmP6FPM0T5Rv7qQBZ4eYXvWkB?usp=sharing
+
+## File locations
+There are a few locations for the new files. The import files for MongoDB and Elasticsearch have been added to narcisweb/bin/, together with createacd.py. This file creates the new author-country dataset. The rest of the code is written in jupyter notebooks and they can be found in notebooks/persistent/. 
+
+## Running the code
+The import scripts can be run when the DOIBoost2017, DOIBoost2018 and GRID datasets have been downloaded and unzipped in /data/orginal/. These are very basic scripts based on importmetadata.py and metadata2elastic.py. The script that creates the author-country dataset has been commented and all notebooks have extended documentation and comments. The notebooks should therefore be self explainatory. 
 
 ### Downloads
 Download NARCIS data from https://dataverse.nl/dataset.xhtml?persistentId=hdl:10411/8H4QSU in the current folder (augmenting-narcis)
