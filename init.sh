@@ -11,6 +11,7 @@ wget https://dataverse.nl/api/access/datafile/16269 -O $datadir/../elastic.tar.g
 gzip -cd $datadir/harvest.2019-05-15.gz > $datadir/harvest.2019-05-15 
 cd $datadir/../data
 gzip -cd ./elastic.tar.gz|tar xvf - 
+rm ./elastic/data/nodes/0/node.lock
 # Upload NARCIS data to MongoDB
 docker exec augmenting-narcis_web_1 '/narcis/bin/importmetadata.py'
 # Then upload the same data to elastic
